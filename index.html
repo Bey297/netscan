@@ -163,6 +163,35 @@
     </div>
 </section>
 
+
+
+        <section class="status" style="margin-bottom:25px">
+    <h3>DNS Lookup</h3>
+
+    <p style="color:#94a3b8;margin:10px 0">
+        Masukkan domain untuk memeriksa DNS.
+    </p>
+
+    <input
+        type="text"
+        id="dnsInput"
+        placeholder="Contoh: google.com"
+        style="width:100%;padding:13px;border-radius:7px;
+        border:1px solid #293b56;background:#0b1120;
+        color:white;margin-bottom:12px"
+    >
+
+    <button
+        onclick="lookupDNS()"
+        style="padding:12px 20px;background:#16836c;
+        color:white;border:0;border-radius:7px"
+    >
+        Periksa DNS
+    </button>
+
+    <div id="dnsResult" style="margin-top:18px"></div>
+</section>
+
         <section class="tools">
 
             <div class="tool">
