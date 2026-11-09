@@ -296,6 +296,64 @@ async function lookupIP() {
     }
 }
 </script>
+
+    <script>
+async function lookupDNS() {
+
+    const domain = document
+        .getElementById("dnsInput")
+        .value.trim();
+
+    const result = document.getElementById("dnsResult");
+
+    if (!domain) {
+        result.textContent = "Masukkan nama domain terlebih dahulu.";
+        return;
+    }
+
+    result.textContent = "Sedang memeriksa DNS...";
+
+    try {
+
+        const url =
+            "https://dns.google/resolve?name=" +
+            encodeURIComponent(domain) +
+            "&type=A";
+
+        const response = await fetch(url);
+        const data = await response.json();
+
+        if (data.Status !== 0) {
+            throw new Error("Domain tidak ditemukan atau DNS bermasalah.");
+        }
+
+        const answers = data.Answer || [];
+
+        result.innerHTML = `
+            <h3 style="color:#38e6a5;margin-bottom:12px">
+                Hasil DNS Lookup
+            </h3>
+            <p>Domain: ${domain}</p>
+            <p>Jumlah hasil: ${answers.length}</p>
+        `;
+
+        answers.forEach(item => {
+            const p = document.createElement("p");
+            p.textContent = item.name + " → " + item.data;
+            result.appendChild(p);
+        });
+
+        if (answers.length === 0) {
+            result.appendChild(
+                document.createTextNode("Tidak ada alamat IPv4 (A Record).")
+            );
+        }
+
+    } catch (error) {
+        result.textContent = "Gagal: " + error.message;
+    }
+}
+</script>
     
 
 </body>
