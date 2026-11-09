@@ -134,6 +134,35 @@
             </p>
         </section>
 
+        <section class="status" style="margin-bottom:25px">
+    <h3>IP Lookup</h3>
+
+    <p style="color:#94a3b8;margin:10px 0">
+        Masukkan alamat IP yang ingin diperiksa.
+        Kosongkan untuk memeriksa IP publik Anda.
+    </p>
+
+    <input
+        type="text"
+        id="ipInput"
+        placeholder="Contoh: 8.8.8.8"
+        style="width:100%;padding:13px;border-radius:7px;
+        border:1px solid #293b56;background:#0b1120;
+        color:white;margin-bottom:12px"
+    >
+
+    <button
+        onclick="lookupIP()"
+        style="padding:12px 20px;background:#16836c;
+        color:white;border:0;border-radius:7px"
+    >
+        Periksa IP
+    </button>
+
+    <div id="ipResult" style="margin-top:18px">
+    </div>
+</section>
+
         <section class="tools">
 
             <div class="tool">
@@ -189,6 +218,56 @@
     <footer>
         NETSCAN Network Tools © 2026
     </footer>
+
+<script>
+async function lookupIP() {
+
+    const ip = document.getElementById("ipInput").value.trim();
+    const result = document.getElementById("ipResult");
+
+    result.innerHTML = "Sedang memeriksa IP...";
+
+    try {
+
+        const url = ip
+            ? "https://ipwho.is/" + encodeURIComponent(ip)
+            : "https://ipwho.is/";
+
+        const response = await fetch(url);
+        const data = await response.json();
+
+        if (!data.success) {
+            throw new Error(data.message || "IP tidak ditemukan");
+        }
+
+        result.innerHTML = `
+            <h3 style="color:#38e6a5;margin-bottom:12px">
+                Hasil IP Lookup
+            </h3>
+
+            <p>IP Address: ${data.ip || "-"}</p>
+            <p>Negara: ${data.country || "-"}</p>
+            <p>Kota: ${data.city || "-"}</p>
+            <p>Wilayah: ${data.region || "-"}</p>
+            <p>ISP: ${data.connection?.isp || "-"}</p>
+            <p>Organisasi: ${data.connection?.org || "-"}</p>
+            <p>Zona waktu: ${data.timezone?.id || "-"}</p>
+            <p>Koordinat perkiraan: ${
+                data.latitude ?? "-"
+            }, ${data.longitude ?? "-"}</p>
+        `;
+
+    } catch (error) {
+
+        result.innerHTML = `
+            <p style="color:#ff7777">
+                Gagal: ${error.message}
+            </p>
+        `;
+    }
+}
+</script>
+    
 
 </body>
 </html>
