@@ -1,0 +1,194 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NETSCAN - Network Tools</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #0b1120;
+            color: #e2e8f0;
+            font-family: Arial, sans-serif;
+        }
+
+        header {
+            background: #111c30;
+            padding: 22px;
+            border-bottom: 1px solid #26354d;
+        }
+
+        .brand {
+            color: #38e6a5;
+            font-size: 25px;
+            font-weight: bold;
+        }
+
+        header p {
+            color: #94a3b8;
+            margin-top: 6px;
+            font-size: 13px;
+        }
+
+        main {
+            max-width: 900px;
+            margin: auto;
+            padding: 22px;
+        }
+
+        .welcome {
+            margin-bottom: 25px;
+        }
+
+        .welcome h2 {
+            font-size: 25px;
+            margin-bottom: 8px;
+        }
+
+        .welcome p {
+            color: #94a3b8;
+            line-height: 1.6;
+        }
+
+        .tools {
+            display: grid;
+            grid-template-columns: repeat(
+                auto-fit,
+                minmax(220px, 1fr)
+            );
+            gap: 15px;
+        }
+
+        .tool {
+            background: #142137;
+            border: 1px solid #293b56;
+            border-radius: 12px;
+            padding: 20px;
+            transition: 0.2s;
+        }
+
+        .tool:hover {
+            border-color: #38e6a5;
+            transform: translateY(-3px);
+        }
+
+        .tool .icon {
+            font-size: 28px;
+            margin-bottom: 14px;
+        }
+
+        .tool h3 {
+            margin-bottom: 9px;
+            color: #38e6a5;
+        }
+
+        .tool p {
+            color: #94a3b8;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        .status {
+            margin-top: 25px;
+            padding: 18px;
+            background: #142137;
+            border-radius: 12px;
+            border: 1px solid #293b56;
+        }
+
+        .status span {
+            color: #38e6a5;
+        }
+
+        footer {
+            text-align: center;
+            color: #64748b;
+            padding: 30px 15px;
+            font-size: 12px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="brand">◉ NETSCAN</div>
+        <p>Network Diagnostic Tools</p>
+    </header>
+
+    <main>
+
+        <section class="welcome">
+            <h2>Network Dashboard</h2>
+            <p>
+                Selamat datang di NETSCAN.
+                Gunakan berbagai tools untuk
+                memeriksa informasi jaringan.
+            </p>
+        </section>
+
+        <section class="tools">
+
+            <div class="tool">
+                <div class="icon">🌐</div>
+                <h3>IP Lookup</h3>
+                <p>Melihat informasi alamat IP.</p>
+            </div>
+
+            <div class="tool">
+                <div class="icon">🔎</div>
+                <h3>DNS Lookup</h3>
+                <p>Memeriksa informasi DNS domain.</p>
+            </div>
+
+            <div class="tool">
+                <div class="icon">📡</div>
+                <h3>Ping</h3>
+                <p>Memeriksa konektivitas jaringan.</p>
+            </div>
+
+            <div class="tool">
+                <div class="icon">🔌</div>
+                <h3>Port Checker</h3>
+                <p>Memeriksa akses port yang diizinkan.</p>
+            </div>
+
+            <div class="tool">
+                <div class="icon">🛣️</div>
+                <h3>Traceroute</h3>
+                <p>Melihat jalur perjalanan jaringan.</p>
+            </div>
+
+            <div class="tool">
+                <div class="icon">📄</div>
+                <h3>HTTP Header</h3>
+                <p>Melihat informasi header HTTP.</p>
+            </div>
+
+        </section>
+
+        <section class="status">
+            <h3>Status NETSCAN</h3>
+            <p style="margin-top:10px">
+                Status: <span>Dashboard siap</span>
+            </p>
+            <p style="color:#94a3b8; margin-top:6px">
+                Tools sedang dalam tahap pengembangan.
+            </p>
+        </section>
+
+    </main>
+
+    <footer>
+        NETSCAN Network Tools © 2026
+    </footer>
+
+</body>
+</html>
